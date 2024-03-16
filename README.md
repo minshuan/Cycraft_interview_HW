@@ -5,6 +5,9 @@ This project is for 2024 Cycraft Interview Homework.
 2. Implement a python script to parse 30 news from [ITHome](https://www.ithome.com.tw/news).
 
 ## 注意
+
+使用python 3.10 環境安裝 requirements.txt
+
 為了使腳本運行正常，請先進入python執行
 ```
 import nltk
