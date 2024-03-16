@@ -1,0 +1,7 @@
+pandas==2.2.1
+numpy==1.26.4
+nmslib==2.1.1
+requests==2.31.0
+beautifulsoup4==4.12.3
+newspaper3k==0.2.8
+nltk==3.8.1
