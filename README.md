@@ -26,13 +26,16 @@ python3 search.py --query-sentence '查詢內容' --limit 查詢數量 --time
 ```search.py``` 會將```查詢內容```embedding成vector後與資料庫中的vector進行比對，並依照```查詢數量```列出最接近的vector所對應到的document內容與對應的相似分數，當輸入```--time```時，則會顯示採用hnsw搜尋以及暴力搜索所需要的時間
 
 ```python3 search.py --query-sentence '測試' --limit 2 --time```
+
 在30筆資料中搜索的執行結果如下:
+
 `
 Use hnsw search:0.44066800
 `
 `
 Use loop search:2.22072110
 `
+
 在僅30筆資料中進行搜索速度就差距將近5倍，若採用loop的方在更龐大的資料中檢索將花費更大量的時間成本
 
 ## Discussion Instructions
