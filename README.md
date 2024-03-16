@@ -6,13 +6,15 @@ This project is for 2024 Cycraft Interview Homework.
 
 ## 注意
 
-使用python 3.10 環境，安裝 pytorch 及 requirements.txt
+- 使用python 3.10 環境，安裝 pytorch 及 requirements.txt
 
-為了使腳本運行正常，請先進入 python 執行
+- 為了使腳本運行正常，請先進入 python 執行
 ```
 import nltk
 nltk.download('punkt')
 ```
+- 使用者須先使用 ```huggingface-cli login``` 新增 Token
+- 登入 [bec-embedding-base_v1](https://huggingface.co/maidalun1020/bce-embedding-base_v1) 並點擊 "Agree and access repository"
 
 ## Start
 其中包含4個檔案，分別是 crawler.py, tinydb.py, insert.py, search.py 其中 tinydb.py 為簡易資料庫，其他三個為功能腳本。

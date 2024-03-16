@@ -8,15 +8,18 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     folder = args.folder
-    db = tinydb.TinyVectorDB()
-    num = 0
-    for file in os.listdir(folder):
-        file_path = os.path.join(folder, file)
-        with open(file_path, "r", encoding="utf-8") as file:
-            content = file.read()
-            db.insert(content)
-            num+=1
+    if os.path.exists(folder):
+        db = tinydb.TinyVectorDB()
+        num = 0
+        for file in os.listdir(folder):
+            file_path = os.path.join(folder, file)
+            with open(file_path, "r", encoding="utf-8") as file:
+                content = file.read()
+                db.insert(content)
+                num+=1
 
-    db.build_index()
-    print("insert %d document to tinydb"%num)
-    db.save()
+        db.build_index()
+        print("insert %d document to tinydb"%num)
+        db.save()
+    else:
+        print("No folder can be inserted.")
