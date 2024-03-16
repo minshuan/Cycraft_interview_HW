@@ -18,12 +18,22 @@ nltk.download('punkt')
 ```
 python3 crawler.py
 python3 insert.py
-python3 search.py --query-sentence '查詢內容' --limit 查詢數量
+python3 search.py --query-sentence '查詢內容' --limit 查詢數量 --time
 ```
 ```crawler.py``` 為爬蟲腳本，從[ITHome](https://www.ithome.com.tw/news)自動爬取30篇文章並命名```"文章標題".txt```存在news資料夾中
 
 ```insert.py``` 會將"news"資料夾內的txt檔案內容以 [bec-embedding-base_v1](https://huggingface.co/maidalun1020/bce-embedding-base_v1)為embedding model轉換成vectort後新增至資料庫，並建立index；資料庫將以```data.json```儲存，index將以```index.bin```儲存
-```search.py``` 會將```查詢內容```embedding成vector後與資料庫中的vector進行比對，並依照```查詢數量```列出最接近的vector所對應到的document內容與對應的相似分數
+```search.py``` 會將```查詢內容```embedding成vector後與資料庫中的vector進行比對，並依照```查詢數量```列出最接近的vector所對應到的document內容與對應的相似分數，當輸入```--time```時，則會顯示採用hnsw搜尋以及暴力搜索所需要的時間
+
+```python3 search.py --query-sentence '測試' --limit 2 --time```
+在30筆資料中搜索的執行結果如下:
+`
+Use hnsw search:0.44066800
+`
+`
+Use loop search:2.22072110
+`
+在僅30筆資料中進行搜索速度就差距將近5倍，若採用loop的方在更龐大的資料中檢索將花費更大量的時間成本
 
 ## Discussion Instructions
 

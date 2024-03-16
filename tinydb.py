@@ -52,18 +52,18 @@ class TinyVectorDB:
         similarities = []
         for i in idxs:
             sim = cosine_sim(query_vector, self.data['EmbVector'].iloc[i])
-            similarities.append((i, sim))
-        similarities.sort(key=lambda x: x[1], reverse=True)
-        top_n = [(self.data.iloc[i]['Document'], sim) for i, sim in similarities[:n]]
+            similarities.append((float(sim), self.data.iloc[i]['Document']))
+        similarities.sort(key=lambda x: x[0], reverse=True)
+        top_n = [[(sim, doc) for sim, doc in similarities[:n]]]
         return top_n
 
     def search_sim(self, str_vec, n):
         similarities = []
         for i, vector in enumerate(self.data['EmbVector']):
             sim = cosine_sim(str_vec, vector)
-            similarities.append((i, sim))
-        similarities.sort(key=lambda x: x[1], reverse=True)
-        top_n = [(self.data.iloc[i]['Document'], sim) for i, sim in similarities[:n]]
+            similarities.append((sim, self.data.iloc[i]['Document']))
+        similarities.sort(key=lambda x: x[0], reverse=True)
+        top_n = [[(sim, doc) for sim, doc in similarities[:n]]]
         return top_n
     
     def save(self):
