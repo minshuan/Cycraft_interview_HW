@@ -13,7 +13,7 @@ if __name__ == "__main__":
     
     db = tinydb.TinyVectorDB()
     # db.show()
-    if not db.empty:
+    if not db.data.empty:
         input_str = args.query_sentence
         limit = args.limit
         str_vec = tinydb.BCE(input_str)
