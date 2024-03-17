@@ -18,7 +18,8 @@ if __name__ == "__main__":
                 db.insert(content)
                 num+=1
 
-        db.build_index()
+        db.build_lsh_index()
+        db.build_hnsw_index()
         print("insert %d document to tinydb"%num)
         db.save()
     else:
