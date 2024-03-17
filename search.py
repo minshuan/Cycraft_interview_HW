@@ -29,9 +29,12 @@ if __name__ == "__main__":
                 print()
         if args.time:
             setup = f"from __main__ import db, str_vec, limit"
-            time_taken_hnsw = timeit.timeit("db.search_similar_hnsw(str_vec, limit)", setup=setup, number=1000)
-            time_taken = timeit.timeit("db.search_sim(str_vec, limit)", setup=setup, number=1000)
+            time_taken_hnsw = timeit.timeit("db.search_similar_hnsw(str_vec, limit)", setup=setup, number=100)
+            time_taken = timeit.timeit("db.search_similar(str_vec, limit)", setup=setup, number=100)
+            time_taken_lsh = timeit.timeit("db.search_similar_lsh(str_vec, limit)", setup=setup, number=100)
+
             print("Use hnsw search:%.8f"%time_taken_hnsw)
             print("Use loop search:%.8f"%time_taken)
+            print("Use lsh search:%.8f"%time_taken_lsh)
     else:
         print("No data can be searched.")
