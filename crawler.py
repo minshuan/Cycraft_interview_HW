@@ -36,6 +36,8 @@ print("共%d篇"%num)
 folder_name = "news"
 if not os.path.exists(folder_name):
     os.makedirs(folder_name)
+a = 1
+# 用標題命名可能包含非法字元
 for i in link_list:
     news_url = 'https://www.ithome.com.tw'+i
     print(news_url)
@@ -43,6 +45,8 @@ for i in link_list:
     article.download()
     article.parse()
     article.nlp()
-    filename = os.path.join(folder_name,article.title+".txt")
-    with open(filename, "w", encoding="utf-8") as file:
-        file.write(article.text)
+    if not os.path.exists(folder_name+str(a)+".txt"):
+        filename = os.path.join(folder_name,str(a)+".txt")
+        with open(filename, "w", encoding="utf-8") as file:
+            file.write(article.text)
+    a+=1
